@@ -7,5 +7,6 @@ RUN pip install --no-cache-dir \
     pandas numexpr>=2.10.2 bottleneck>=1.4.2 \
     geopy pgeocode geonamescache sweetviz \
 #     streamlit dash
-    polars
+    polars \
+    jupyterlab-citation-manager
 USER jovyan
