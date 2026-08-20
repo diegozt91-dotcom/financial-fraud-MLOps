@@ -41,6 +41,8 @@ services:
     build: .
     image: mi-entorno-tfm:1.0
     container_name: tfm-pyspark-notebook-1
+    env_file:
+      - .env
     user: root
     ports:
       - "8888:8888" 
@@ -49,11 +51,13 @@ services:
       - "8050:8050"
     volumes:
       - .:/home/jovyan/work
+      - ./.jupyter:/home/jovyan/.jupyter
     environment:
       - JUPYTER_ENABLE_LAB=yes
       - SPARK_DRIVER_MEMORY=4g
       - SPARK_EXECUTOR_MEMORY=4g
       - PYTHONPATH=/usr/local/spark/python:/usr/local/spark/python/lib/py4j-0.10.9.7-src.zip
+      - ZOTERO_API_KEY=${ZOTERO_API_KEY}
     networks:
       - tfm-network
     deploy:
